@@ -1,0 +1,40 @@
+#id, placename, category, state
+0, New Orleans, yellow, Lousiana
+1, Detroit, pink, Michigan
+2, Seattle, blue, Washington
+3, Tucson, blue, Arizona
+4, Ames, yellow, Iowa
+5, Marfa, orange, Texas
+6, Zion National Park, green, Iowa
+7, Nashville, blue, Tennessee
+8, Austin, yellow, Texas
+9, Reno, orange, Nevada
+10, Boise, blue, Idaho
+11, New York City, yellow, New York
+12, Portland, yellow, Oregon
+13, Santa Fe, pink, New Mexico
+14, Albuquerque, orange, New Mexico
+15, Crater Lake, green, Oregon
+16, Joshua Tree National Park, green, California
+17, Arches National Park, green, Utah
+18, Topeka, pink, Kansas
+19, Birmingham, orange, Alabama
+20, Memphis, orange, Tennessee
+21, Eugene, blue, Oregon
+22, Missoula, blue, Montana
+23, Billings, orange, Montana
+24, Rapid City, green, South Dakota
+25, Sioux Falls, pink, South Dakota
+26, Bismarck, pink, North Dakota
+27, Fargo, orange, North Dakota
+28, Columbus, orange, Ohio
+29, Philadelphia, blue, Pennsylvania
+30, Portland, pink, Maine
+31, Concord, pink, New Hampshire
+32, Cape Cod, pink, Massachusetts
+33, Monpelier, pink, Vermont
+34, Everglades national park, green, Florida
+35, Omaha, pink, Nebraska
+36, Daytona Beach, blue, Florida
+37, Houston, blue, Texas
+38, Atlanta, blue, Georgia
