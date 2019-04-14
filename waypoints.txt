@@ -32,7 +32,7 @@
 30, Portland, pink, Maine
 31, Concord, pink, New Hampshire
 32, Cape Cod, pink, Massachusetts
-33, Monpelier, pink, Vermont
+33, Montpelier, pink, Vermont
 34, Everglades national park, green, Florida
 35, Omaha, pink, Nebraska
 36, Daytona Beach, blue, Florida
