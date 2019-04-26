@@ -6,7 +6,7 @@ Created on Sun Apr 14 21:17:16 2019
 @author: danw
 """
 
-from waypointdata import waypoint_in
+from .waypointdata import waypoint_in
 from abc import abstractmethod
 from typing import Tuple
 from collections import namedtuple
