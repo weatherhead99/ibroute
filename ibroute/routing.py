@@ -16,10 +16,12 @@ from pickle import load, dump
 class CachedDistanceMatrix:
     CACHE_SIZE = 2000
     def __init__(self,geolayer: GeoLayer, 
-                 waypoints: Sequence[waypoint_geocoded]):
+                 waypoints: Sequence[waypoint_geocoded],
+                 home: waypoint_geocoded=None):
         self._geolayer = GeoLayer
         self._waypointmap = {_.id : _ for _ in waypoints}
         self._distance_matrix_cache = OrderedDict()
+        self._home = home
     
     def distance_matrix_element(self, i: int, j: int) -> float:
         fromto = (min(i,j),max(i,j))
@@ -36,9 +38,22 @@ class CachedDistanceMatrix:
 
     def save_to_file(self, fname: str) -> None:
         dct = {"waypointmap" : self._waypointmap,
-               "distance_matrix_cache" : self._distance_matrix_cache}
+               "distance_matrix_cache" : self._distance_matrix_cache,
+               "home" : self._home}
         with open(fname, "wb") as f:
             dump(dct,f)
+
+    def __len__(self):
+        n_waypoints = len(self._waypointmap)
+        return n_waypoints 
+
+    @property
+    def home(self):
+        if self._home is not None:
+            return self._waypointmap[self._home.id]
+        else:
+            raise KeyError("don't have home information stored!")
+
 
     @classmethod
     def load_from_file(cls, fname: str, geolayer: GeoLayer):
@@ -47,6 +62,7 @@ class CachedDistanceMatrix:
             
         thisinstance = cls.__new__(cls)
         thisinstance._geolayer = geolayer
+        thisinstance._home = data["home"]
         thisinstance._waypointmap = data["waypointmap"]
         thisinstance._distance_matrix_cache = data["distance_matrix_cache"]
         

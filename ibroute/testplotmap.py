@@ -6,12 +6,14 @@ Created on Sun Apr 14 21:30:18 2019
 @author: danw
 """
 
+import pickle
 from geolayer import GeopyNominatimLayer
 from waypointdata import get_waypoints_from_file, Categories
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import matplotlib.pyplot as plt
 import cartopy.io.shapereader as shpreader
+from os.path import exists
 
 wps = get_waypoints_from_file("../waypoints.txt")
 api = GeopyNominatimLayer()
@@ -55,6 +57,26 @@ for k,v in data.items():
 for wpin, wpout in zip(wps, coded_wps):
     latlon = wpout.latlong
     ax.annotate(wpin.name, (latlon[1],latlon[0]))
-    
+
+def plot_between_wps(wp1, wp2, ax):
+    ll_start = wp1.latlong
+    ll_end = wp2.latlong
+    ax.plot([ll_start[1], ll_end[1]], [ll_start[0], ll_end[0]],
+                    linestyle="--", color="red", transform=ccrs.Geodetic())
+
+
+
+if exists("../solution.pickle"):
+    print("loading solution")
+    with open("../solution.pickle","rb") as f:
+        soln = pickle.load(f)["solnplan"]
+        next_waypoint = coded_wps[soln[0]]
+        for idx in soln[1:]:
+            past_waypoint = next_waypoint
+            next_waypoint = coded_wps[idx]
+            plot_between_wps(past_waypoint, next_waypoint,ax)
+        plot_between_wps(next_waypoint, coded_wps[soln[0]],ax)
+        
+
 plt.tight_layout()
-    
+fig.savefig("solution_test.pdf")

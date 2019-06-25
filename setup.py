@@ -10,4 +10,5 @@ from setuptools import setup, find_packages
 
 setup(name="ibroute",
       packages=["ibroute"],
+      build_requires = ["us"],
       include_package_data=True)
